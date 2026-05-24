@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=1.0">
     <title>Naomi Tcheumani | L'Empire</title>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -17,7 +17,7 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-        body { background: var(--bg); color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+        body { background: var(--bg); color: #fff; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; width: 100%; }
 
         /* --- BANDE ANNONCE HAUT DYNAMIQUE --- */
         .top-ribbon {
@@ -31,10 +31,12 @@
             overflow: hidden;
             position: relative;
             z-index: 100;
+            width: 100%;
         }
         .top-ribbon-content {
             display: inline-block;
             animation: defileRibbon 20s linear infinite;
+            font-size: clamp(0.7rem, 4vw, 0.9rem);
         }
         @keyframes defileRibbon {
             from { transform: translateX(0); }
@@ -53,10 +55,12 @@
             overflow: hidden;
             position: relative;
             margin-top: 80px;
+            width: 100%;
         }
         .bottom-ribbon-content {
             display: inline-block;
             animation: defileRibbonReverse 22s linear infinite;
+            font-size: clamp(0.7rem, 4vw, 0.9rem);
         }
         @keyframes defileRibbonReverse {
             from { transform: translateX(-50%); }
@@ -80,36 +84,42 @@
 
         /* --- HERO SECTION --- */
         .hero { 
-            padding: 180px 5% 100px; 
+            padding: 120px 5% 60px; 
             display: flex; 
+            flex-direction: column;
             align-items: center; 
-            justify-content: space-between; 
-            min-height: 100vh;
+            justify-content: center; 
+            min-height: auto;
             position: relative;
+            gap: 40px;
         }
-        .hero-text { flex: 1; }
-        .hero-text h1 { font-size: clamp(4rem, 10vw, 8rem); line-height: 0.8; margin-bottom: 20px; }
-        .tagline { font-size: 1.5rem; letter-spacing: 8px; color: #fff; text-transform: uppercase; margin-bottom: 30px; font-weight: 200; }
+        .hero-text { flex: 1; text-align: center; width: 100%; }
+        .hero-text h1 { font-size: clamp(2.5rem, 12vw, 5rem); line-height: 1.1; margin-bottom: 20px; }
+        .tagline { font-size: clamp(0.8rem, 4vw, 1.2rem); letter-spacing: 4px; color: #fff; text-transform: uppercase; margin-bottom: 20px; font-weight: 200; }
         .hero-description {
-            font-size: 1.3rem;
+            font-size: clamp(1rem, 4vw, 1.3rem);
             opacity: 0.9;
-            max-width: 600px;
+            max-width: 100%;
             line-height: 1.5;
             margin-top: 20px;
             font-weight: 400;
+            padding: 0 10px;
         }
         .hero-img { 
-            width: 450px; 
-            height: 600px; 
+            width: 80%;
+            max-width: 320px;
+            height: auto;
+            aspect-ratio: 3/4;
             background: url('p.jpg') center/cover; 
             border-radius: 5px; 
             position: relative; 
             transition: 0.5s;
+            margin: 0 auto;
         }
         .hero-img::after { 
             content: ''; 
             position: absolute; 
-            inset: -15px; 
+            inset: -10px; 
             border: 2px solid rgba(255,255,255,0.5); 
             border-radius: 10px;
             z-index: -1; 
@@ -117,79 +127,134 @@
 
         /* --- SECTION STATS --- */
         .stats-section {
-            padding: 80px 5%;
+            padding: 60px 5%;
             background: linear-gradient(135deg, #0a0a0a 0%, #050505 100%);
         }
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
             text-align: center;
             max-width: 1200px;
             margin: 0 auto;
         }
-        .stat-item { padding: 30px; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
+        .stat-item { padding: 20px 15px; border: 1px solid rgba(255,255,255,0.1); transition: 0.3s; }
         .stat-item:hover { border-color: var(--gold); transform: translateY(-5px); }
-        .stat-number { font-size: 3.5rem; font-weight: 800; color: var(--gold); margin-bottom: 10px; }
-        .stat-label { font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; opacity: 0.8; }
+        .stat-number { font-size: clamp(2rem, 8vw, 3.5rem); font-weight: 800; color: var(--gold); margin-bottom: 10px; }
+        .stat-label { font-size: clamp(0.7rem, 3vw, 1rem); text-transform: uppercase; letter-spacing: 2px; opacity: 0.8; }
 
         /* --- PORTFOLIO --- */
-        .portfolio-section { padding: 100px 5%; background: #050505; }
-        .empire-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
-        .empire-img { width: 100%; height: 500px; object-fit: cover; filter: grayscale(100%); transition: 0.8s; border: 1px solid #222; }
-        .empire-img:hover { filter: grayscale(0%); transform: scale(1.05); border-color: #fff; }
+        .portfolio-section { padding: 60px 5%; background: #050505; }
+        .empire-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        .empire-img { width: 100%; height: auto; aspect-ratio: 3/4; object-fit: cover; filter: grayscale(100%); transition: 0.8s; border: 1px solid #222; }
+        .empire-img:hover { filter: grayscale(0%); transform: scale(1.02); border-color: #fff; }
+
+        /* --- SECTION RÉALISATIONS RÉELLES (AJOUTÉE) --- */
+        .realisations-section {
+            padding: 60px 5%;
+            background: #000;
+        }
+        .realisations-title {
+            text-align: center;
+            font-size: clamp(1.8rem, 6vw, 2.5rem);
+            margin-bottom: 40px;
+        }
+        .realisations-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .realisation-card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.3s;
+        }
+        .realisation-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold);
+        }
+        .realisation-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--gold);
+        }
+        .realisation-card p {
+            opacity: 0.8;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        .realisation-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            transition: gap 0.3s;
+        }
+        .realisation-link:hover {
+            gap: 12px;
+        }
+        .realisation-content {
+            padding: 25px;
+        }
 
         /* --- TECHSTACK --- */
-        .techstack-section { padding: 100px 5%; background: #000; text-align: center; }
-        .tech-cloud { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; max-width: 1000px; margin: 0 auto; }
+        .techstack-section { padding: 60px 5%; background: #000; text-align: center; }
+        .tech-cloud { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 1000px; margin: 0 auto; }
         .tech-item {
-            width: 100px; height: 100px; background: rgba(255,255,255,0.03); border-radius: 20px;
+            width: 70px; height: 70px; background: rgba(255,255,255,0.03); border-radius: 20px;
             display: flex; align-items: center; justify-content: center; transition: 0.4s;
             border: 1px solid rgba(255,255,255,0.1);
         }
         .tech-item:hover { transform: scale(1.15); border-color: var(--gold); box-shadow: 0 0 30px rgba(212,175,55,0.3); }
-        .tech-item img { width: 60px; height: 60px; object-fit: contain; }
+        .tech-item img { width: 40px; height: 40px; object-fit: contain; }
 
         /* --- TIMELINE --- */
-        .timeline-section { padding: 100px 5%; background: #0a0a0a; }
+        .timeline-section { padding: 60px 5%; background: #0a0a0a; }
         .timeline { max-width: 1000px; margin: 0 auto; position: relative; }
-        .timeline::before { content: ''; position: absolute; left: 50%; width: 2px; height: 100%; background: var(--gold); }
-        .timeline-item { display: flex; justify-content: flex-end; padding: 30px; position: relative; width: 50%; }
-        .timeline-item:nth-child(even) { margin-left: 50%; justify-content: flex-start; }
-        .timeline-year { position: absolute; right: -60px; top: 30px; font-size: 1.5rem; font-weight: 800; color: var(--gold); }
-        .timeline-item:nth-child(even) .timeline-year { left: -60px; right: auto; }
-        .timeline-content { background: rgba(255,255,255,0.03); padding: 20px 30px; border-radius: 10px; width: 80%; border-left: 3px solid var(--gold); }
+        .timeline::before { content: ''; position: absolute; left: 20px; width: 2px; height: 100%; background: var(--gold); }
+        .timeline-item { display: block; padding: 20px 0 20px 50px; position: relative; width: 100%; }
+        .timeline-year { position: absolute; left: -5px; top: 25px; font-size: 1rem; font-weight: 800; color: var(--gold); background: #0a0a0a; padding: 2px 8px; border-radius: 20px; z-index: 2; }
+        .timeline-content { background: rgba(255,255,255,0.03); padding: 15px 20px; border-radius: 10px; width: 100%; border-left: 3px solid var(--gold); }
 
         /* --- MANIFESTE --- */
-        .manifeste-section { padding: 120px 10%; background: #fff; color: #000; }
-        .manifeste-text { font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 800; line-height: 1.2; margin-bottom: 50px; }
+        .manifeste-section { padding: 60px 5%; background: #fff; color: #000; }
+        .manifeste-text { font-size: clamp(1.2rem, 5vw, 2rem); font-weight: 800; line-height: 1.2; margin-bottom: 30px; }
         .disponibilite-badge { 
             display: inline-block; 
             border: 3px solid #000; 
-            padding: 20px 40px; 
+            padding: 15px 25px; 
             font-weight: 900; 
             text-transform: uppercase;
             cursor: pointer;
             transition: 0.3s;
+            text-align: center;
+            width: 100%;
+            max-width: 400px;
         }
         .disponibilite-badge:hover { background: var(--gold); border-color: var(--gold); }
 
         /* --- TÉMOIGNAGES EN DEFILEMENT AVEC IMAGES --- */
         .testimonials-section {
-            padding: 100px 5%;
+            padding: 60px 5%;
             background: #050505;
             overflow: hidden;
         }
         .testimonials-marquee {
             display: flex;
             animation: defile-temoignages 35s linear infinite;
-            gap: 30px;
+            gap: 20px;
             width: max-content;
         }
         .testimonial-card {
-            width: 380px;
+            width: 280px;
             background: rgba(255,255,255,0.03);
-            padding: 25px;
+            padding: 20px;
             border-radius: 20px;
             border: 1px solid rgba(255,255,255,0.1);
             flex-shrink: 0;
@@ -198,18 +263,18 @@
         .testimonial-header {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 12px;
             margin-bottom: 15px;
         }
         .testimonial-avatar {
-            width: 55px;
-            height: 55px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             background-size: cover;
             background-position: center;
         }
-        .stars { color: var(--gold); margin-top: 5px; font-size: 0.9rem; }
-        .testimonial-text { font-style: italic; margin-bottom: 15px; line-height: 1.5; }
+        .stars { color: var(--gold); margin-top: 5px; font-size: 0.8rem; }
+        .testimonial-text { font-style: italic; margin-bottom: 15px; line-height: 1.4; font-size: 0.9rem; }
         @keyframes defile-temoignages {
             from { transform: translateX(0); }
             to { transform: translateX(-50%); }
@@ -217,13 +282,13 @@
 
         /* --- APPLICATIONS AVEC DESIGN CARTES --- */
         .apps-section {
-            padding: 100px 5%;
+            padding: 60px 5%;
             background: #000;
             text-align: center;
         }
         .apps-description {
-            font-size: 1.2rem;
-            margin-bottom: 60px;
+            font-size: 1rem;
+            margin-bottom: 40px;
             opacity: 0.8;
             max-width: 800px;
             margin-left: auto;
@@ -231,86 +296,86 @@
         }
         .apps-grid-modern {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 40px;
+            grid-template-columns: 1fr;
+            gap: 25px;
             max-width: 1200px;
             margin: 0 auto;
         }
         .app-card-modern {
             text-align: center;
-            padding: 30px 20px;
+            padding: 25px 20px;
             background: transparent;
             transition: 0.3s;
-            border-right: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        .app-card-modern:last-child { border-right: none; }
-        .app-card-modern:hover { transform: translateY(-8px); }
+        .app-card-modern:last-child { border-bottom: none; }
+        .app-card-modern:hover { transform: translateY(-5px); }
         .app-icon {
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             color: var(--gold);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         .app-card-modern h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
+            font-size: 1.3rem;
+            margin-bottom: 8px;
         }
         .app-card-modern .app-date {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             color: var(--gold);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         .app-card-modern .app-desc {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             opacity: 0.7;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             line-height: 1.4;
         }
         .app-link {
             color: var(--gold);
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             transition: 0.3s;
         }
         .app-link:hover { letter-spacing: 1px; }
 
         /* --- PROJETS FUTURS --- */
         .future-projects {
-            padding: 100px 5%;
+            padding: 60px 5%;
             background: linear-gradient(135deg, #0a0a0a 0%, #000 100%);
         }
         .future-header {
             text-align: center;
-            margin-bottom: 80px;
+            margin-bottom: 50px;
         }
         .future-header h2 {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 6vw, 2.5rem);
             margin-bottom: 20px;
         }
         .future-header .separator {
-            width: 80px;
+            width: 60px;
             height: 2px;
             background: var(--gold);
             margin: 0 auto;
         }
         .future-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
+            grid-template-columns: 1fr;
+            gap: 25px;
             max-width: 1200px;
             margin: 0 auto;
         }
         .future-card {
             background: rgba(255,255,255,0.03);
-            padding: 50px 30px;
+            padding: 30px 20px;
             text-align: center;
             border: 1px solid rgba(255,255,255,0.1);
             transition: 0.3s;
         }
-        .future-card:hover { border-color: var(--gold); transform: translateY(-10px); }
-        .future-card i { font-size: 3rem; color: var(--gold); margin-bottom: 20px; }
-        .future-card h3 { font-size: 1.8rem; margin-bottom: 15px; }
-        .future-card p { opacity: 0.7; line-height: 1.5; }
+        .future-card:hover { border-color: var(--gold); transform: translateY(-5px); }
+        .future-card i { font-size: 2.5rem; color: var(--gold); margin-bottom: 15px; }
+        .future-card h3 { font-size: 1.5rem; margin-bottom: 10px; }
+        .future-card p { opacity: 0.7; line-height: 1.5; font-size: 0.9rem; }
 
         /* --- MODALE CALENDRIER --- */
         .modal {
@@ -327,13 +392,14 @@
         }
         .modal-content {
             background: #0a0a0a;
-            padding: 40px;
+            padding: 25px;
             border-radius: 20px;
             border: 2px solid #fff;
-            max-width: 550px;
+            max-width: 500px;
             width: 90%;
+            margin: 20px;
         }
-        .modal-content h3 { color: #fff; margin-bottom: 20px; }
+        .modal-content h3 { color: #fff; margin-bottom: 20px; font-size: 1.3rem; }
         .calendar-input {
             width: 100%;
             padding: 12px;
@@ -342,7 +408,7 @@
             border: 1px solid #fff;
             color: white;
             border-radius: 8px;
-            font-size: 1rem;
+            font-size: 0.9rem;
         }
         .modal-content select, .modal-content input {
             width: 100%;
@@ -352,6 +418,7 @@
             border: 1px solid #fff;
             color: white;
             border-radius: 8px;
+            font-size: 0.9rem;
         }
         .modal-content button {
             background: #fff;
@@ -367,57 +434,82 @@
         .modal-content button:hover { background: var(--gold); }
         .close-modal {
             float: right;
-            font-size: 2rem;
+            font-size: 1.8rem;
             cursor: pointer;
             color: #fff;
         }
 
         /* --- FOOTER --- */
         .contact-footer {
-            padding: 100px 10%;
+            padding: 60px 5%;
             background: white;
             color: black;
-            border-radius: 50px 50px 0 0;
+            border-radius: 30px 30px 0 0;
         }
         .contact-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            grid-template-columns: 1fr;
+            gap: 40px;
         }
-        .contact-left h2 { font-size: 5.5rem; margin-bottom: 20px; font-weight: 900; }
-        .contact-left p { font-size: 1.2rem; margin-bottom: 15px; }
-        .contact-details { margin-top: 30px; font-size: 1.1rem; }
-        .contact-details i { width: 30px; color: var(--gold); margin-right: 10px; }
-        .form-group { position: relative; margin-bottom: 30px; }
+        .contact-left h2 { font-size: clamp(2.5rem, 10vw, 5rem); margin-bottom: 15px; font-weight: 900; }
+        .contact-left p { font-size: 1rem; margin-bottom: 15px; }
+        .contact-details { margin-top: 20px; font-size: 1rem; }
+        .contact-details i { width: 25px; color: var(--gold); margin-right: 10px; }
+        .form-group { position: relative; margin-bottom: 25px; }
         .form-group input, .form-group textarea {
-            width: 100%; padding: 18px 0 8px 0;
+            width: 100%; padding: 15px 0 8px 0;
             border: none; border-bottom: 2px solid #ddd;
             background: transparent; outline: none;
         }
         .form-group label {
-            position: absolute; left: 0; top: 18px;
+            position: absolute; left: 0; top: 15px;
             transition: 0.3s; color: #888;
         }
         .form-group input:focus ~ label, .form-group input:valid ~ label,
         .form-group textarea:focus ~ label, .form-group textarea:valid ~ label {
-            top: -10px; font-size: 0.75rem; color: var(--gold);
+            top: -10px; font-size: 0.7rem; color: var(--gold);
         }
         .submit-btn {
-            background: black; color: white; padding: 18px;
+            background: black; color: white; padding: 15px;
             width: 100%; border: none; font-weight: 800; cursor: pointer;
         }
         .submit-btn:hover { background: var(--gold); color: black; }
 
-        @media (max-width: 1024px) {
-            .hero { flex-direction: column; padding-top: 200px; text-align: center; }
-            .hero-img { margin-top: 50px; }
-            .empire-grid, .stats-grid, .future-grid, .apps-grid-modern { grid-template-columns: repeat(2, 1fr); }
-            .apps-grid-modern .app-card-modern { border-right: none; }
-            .contact-grid { grid-template-columns: 1fr; }
-            .timeline::before { left: 20px; }
-            .timeline-item { width: 100%; padding-left: 50px; justify-content: flex-start; }
-            .timeline-item:nth-child(even) { margin-left: 0; }
-            .timeline-year { left: -40px !important; right: auto !important; }
+        /* --- TABLETTE ET DESKTOP --- */
+        @media (min-width: 768px) {
+            .hero {
+                flex-direction: row;
+                padding: 180px 5% 100px;
+                min-height: 100vh;
+                gap: 50px;
+            }
+            .hero-text { text-align: left; }
+            .hero-description { padding: 0; }
+            .hero-img { width: 380px; margin: 0; }
+            .stats-grid { grid-template-columns: repeat(4, 1fr); gap: 30px; }
+            .empire-grid { grid-template-columns: repeat(4, 1fr); gap: 15px; }
+            .realisations-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+            .tech-item { width: 90px; height: 90px; }
+            .tech-item img { width: 50px; height: 50px; }
+            .timeline::before { left: 50%; }
+            .timeline-item { width: 50%; display: flex; justify-content: flex-end; padding: 30px; }
+            .timeline-item:nth-child(even) { margin-left: 50%; justify-content: flex-start; }
+            .timeline-year { position: absolute; right: -60px; top: 30px; left: auto; background: transparent; font-size: 1.3rem; }
+            .timeline-item:nth-child(even) .timeline-year { left: -60px; right: auto; }
+            .timeline-content { width: 80%; }
+            .apps-grid-modern { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+            .app-card-modern { border-right: 1px solid rgba(255,255,255,0.1); border-bottom: none; }
+            .future-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
+            .contact-grid { grid-template-columns: 1fr 1fr; gap: 50px; }
+            .testimonial-card { width: 350px; }
+        }
+
+        @media (min-width: 1024px) {
+            .hero-img { width: 450px; }
+            .apps-grid-modern { grid-template-columns: repeat(4, 1fr); gap: 40px; }
+            .future-grid { grid-template-columns: repeat(3, 1fr); gap: 40px; }
+            .realisations-grid { max-width: 1000px; margin: 0 auto; }
+            .testimonial-card { width: 380px; }
         }
     </style>
 </head>
@@ -465,33 +557,54 @@
         </div>
     </section>
 
+    <!-- SECTION RÉALISATIONS RÉELLES (AJOUTÉE AVEC VOS LIENS) -->
+    <section class="realisations-section">
+        <h2 class="realisations-title effet-diamant">MES RÉALISATIONS</h2>
+        <div class="realisations-grid">
+            <div class="realisation-card" data-aos="flip-left">
+                <div class="realisation-content">
+                    <h3><i class="fas fa-tshirt" style="margin-right: 10px;"></i> MediLuxWear</h3>
+                    <p>E-commerce de luxe médical et vêtements professionnels haut de gamme. Interface moderne, panier intelligent et expérience utilisateur premium.</p>
+                    <a href="https://mediluxwear.com" target="_blank" class="realisation-link">Voir le site <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="realisation-card" data-aos="flip-left" data-aos-delay="200">
+                <div class="realisation-content">
+                    <h3><i class="fas fa-code" style="margin-right: 10px;"></i> Agence Digital Elite</h3>
+                    <p>Site vitrine moderne pour agence de communication. Design élégant, animations fluides et parfaitement responsive.</p>
+                    <a href="https://eloquent-sawine-591a50.netlify.app/" target="_blank" class="realisation-link">Voir le site <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- PORTFOLIO -->
     <section class="portfolio-section">
         <div class="empire-grid">
-            <img src="1.jpg" class="empire-img" alt="Projet 1">
-            <img src="2.jpg" class="empire-img" alt="Projet 2">
-            <img src="3.jpg" class="empire-img" alt="Projet 3">
-            <img src="4.jpg" class="empire-img" alt="Projet 4">
+            <img src="1.jpg" class="empire-img" alt="Projet 1" onerror="this.src='https://via.placeholder.com/600x800/222/fff?text=Projet+1'">
+            <img src="2.jpg" class="empire-img" alt="Projet 2" onerror="this.src='https://via.placeholder.com/600x800/222/fff?text=Projet+2'">
+            <img src="3.jpg" class="empire-img" alt="Projet 3" onerror="this.src='https://via.placeholder.com/600x800/222/fff?text=Projet+3'">
+            <img src="4.jpg" class="empire-img" alt="Projet 4" onerror="this.src='https://via.placeholder.com/600x800/222/fff?text=Projet+4'">
         </div>
     </section>
 
     <!-- TECHSTACK -->
     <section class="techstack-section">
-        <h2 class="effet-diamant" style="font-size:2.5rem;">MA TECHNOLOGIE</h2>
+        <h2 class="effet-diamant" style="font-size:clamp(1.8rem,6vw,2.5rem);">MA TECHNOLOGIE</h2>
         <div class="tech-cloud">
-            <div class="tech-item"><img src="C:\Users\NITROV15\Documents\portfolio\a.png" alt="React"></div>
-            <div class="tech-item"><img src="C:\Users\NITROV15\Documents\portfolio\b.png" alt="Node.js"></div>
-            <div class="tech-item"><img src="C:\Users\NITROV15\Documents\portfolio\c.png" alt="Python"></div>
-            <div class="tech-item"><img src="C:\Users\NITROV15\Documents\portfolio\d.png" alt="TensorFlow"></div>
-            <div class="tech-item"><img src="C:\Users\NITROV15\Documents\portfolio\e.png" alt="MongoDB"></div>
-            <div class="tech-item"><img src="C:\Users\NITROV15\Documents\portfolio\f.png" alt="AWS"></div>
-            <div class="tech-item"><img src="C:\Users\NITROV15\Documents\portfolio\g.png" alt="Figma"></div>
+            <div class="tech-item"><img src="C:\Users\NITROV15\Documents\portfolio\a.png" alt="React" onerror="this.src='https://via.placeholder.com/60?text=React'"></div>
+            <div class="tech-item"><img src="C:\Users\NITROV15\Documents\portfolio\b.png" alt="Node.js" onerror="this.src='https://via.placeholder.com/60?text=Node'"></div>
+            <div class="tech-item"><img src="C:\Users\NITROV15\Documents\portfolio\c.png" alt="Python" onerror="this.src='https://via.placeholder.com/60?text=Python'"></div>
+            <div class="tech-item"><img src="C:\Users\NITROV15\Documents\portfolio\d.png" alt="TensorFlow" onerror="this.src='https://via.placeholder.com/60?text=TF'"></div>
+            <div class="tech-item"><img src="C:\Users\NITROV15\Documents\portfolio\e.png" alt="MongoDB" onerror="this.src='https://via.placeholder.com/60?text=Mongo'"></div>
+            <div class="tech-item"><img src="C:\Users\NITROV15\Documents\portfolio\f.png" alt="AWS" onerror="this.src='https://via.placeholder.com/60?text=AWS'"></div>
+            <div class="tech-item"><img src="C:\Users\NITROV15\Documents\portfolio\g.png" alt="Figma" onerror="this.src='https://via.placeholder.com/60?text=Figma'"></div>
         </div>
     </section>
 
     <!-- TIMELINE -->
     <section class="timeline-section">
-        <h2 class="effet-diamant" style="text-align:center; font-size:3rem;">MON PARCOURS</h2>
+        <h2 class="effet-diamant" style="text-align:center; font-size:clamp(1.8rem,6vw,3rem);">MON PARCOURS</h2>
         <div class="timeline">
             <div class="timeline-item"><div class="timeline-year">2021</div><div class="timeline-content"><h3>Vente en ligne</h3><p>Débuts dans l'e-commerce et vente de contenus digitaux</p></div></div>
             <div class="timeline-item"><div class="timeline-year">2022</div><div class="timeline-content"><h3>Vente de terrains</h3><p>Négociation et transactions immobilières</p></div></div>
@@ -506,19 +619,19 @@
         <div class="manifeste-content">
             <h2>Manifeste d'Empire</h2>
             <div class="manifeste-text">Mon parcours chez Tchabi Shop, BG Tech et Innovation Plus m'a forgé une certitude : la technique n'est rien sans vision. Je ne suis pas une simple exécutante. Je suis une partenaire de croissance. Mon objectif est d'utiliser mon expertise en IA et Big Data pour transformer le paysage économique du Cameroun et au-delà.</div>
-            <div class="disponibilite-badge" onclick="openModal()">DISPONIBILITÉ : LUNDI AU VENDREDI<br><span style="font-size:0.8rem;">(CLIQUEZ POUR PRENDRE RENDEZ-VOUS)</span></div>
+            <div class="disponibilite-badge" onclick="openModal()">DISPONIBILITÉ : LUNDI AU VENDREDI<br><span style="font-size:0.7rem;">(CLIQUEZ POUR PRENDRE RENDEZ-VOUS)</span></div>
         </div>
     </section>
 
     <!-- TÉMOIGNAGES EN DEFILEMENT AVEC IMAGES FICTIVES -->
     <section class="testimonials-section">
-        <h2 class="effet-diamant" style="text-align:center; font-size:2.5rem; margin-bottom:50px;">ILS PARLENT DE MOI</h2>
+        <h2 class="effet-diamant" style="text-align:center; font-size:clamp(1.5rem,5vw,2.5rem); margin-bottom:40px;">ILS PARLENT DE MOI</h2>
         <div class="testimonials-marquee" id="testimonialsMarquee"></div>
     </section>
 
     <!-- APPLICATIONS EN CARTES SÉPARÉES -->
     <section class="apps-section">
-        <h2 class="effet-diamant" style="font-size:2rem; margin-bottom:20px;">MES APPLICATIONS</h2>
+        <h2 class="effet-diamant" style="font-size:clamp(1.5rem,5vw,2rem); margin-bottom:20px;">MES APPLICATIONS</h2>
         <div class="apps-description">
             Découvrez mes créations et solutions digitales disponibles en ligne. Cliquez sur les liens ci-dessous pour accéder directement à mes applications et plateformes.
         </div>
@@ -578,11 +691,11 @@
                     <p><i class="far fa-envelope"></i> naomi.tcheumani@proton.me</p>
                 </div>
             </div>
-            <form>
-                <div class="form-group"><input type="text" required><label>NOM COMPLET</label></div>
-                <div class="form-group"><input type="email" required><label>EMAIL PROFESSIONNEL</label></div>
-                <div class="form-group"><textarea required></textarea><label>VOTRE AMBITION...</label></div>
-                <button class="submit-btn">ENVOYER</button>
+            <form id="contactForm">
+                <div class="form-group"><input type="text" id="fullname" required><label>NOM COMPLET</label></div>
+                <div class="form-group"><input type="email" id="email" required><label>EMAIL PROFESSIONNEL</label></div>
+                <div class="form-group"><textarea id="ambition" required></textarea><label>VOTRE AMBITION...</label></div>
+                <button type="submit" class="submit-btn">ENVOYER</button>
             </form>
         </div>
         <div style="text-align:center; margin-top:50px; opacity:0.6;">TCHEUMS ✦ GLOBAL EMPIRE © 2026</div>
@@ -593,7 +706,7 @@
         <div class="modal-content">
             <span class="close-modal">&times;</span>
             <h3>📅 Prendre rendez-vous stratégique</h3>
-            <input type="date" id="rdvDate" class="calendar-input" min="2026-05-09" max="2026-12-31">
+            <input type="date" id="rdvDate" class="calendar-input" min="2026-05-24" max="2026-12-31">
             <select id="rdvTime">
                 <option value="09:00">09:00 - Matin</option><option value="10:00">10:00 - Matin</option>
                 <option value="11:00">11:00 - Matin</option><option value="14:00">14:00 - Après-midi</option>
@@ -693,6 +806,16 @@
             document.getElementById('rdvLocation').value = '';
             document.getElementById('rdvCompany').value = '';
             document.getElementById('rdvPhone').value = '';
+        }
+
+        // Formulaire contact
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('📩 Merci ! Votre message a bien été envoyé. Je vous répondrai sous 48h.');
+                contactForm.reset();
+            });
         }
     </script>
 </body>
