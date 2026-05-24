@@ -68,6 +68,7 @@
             background: var(--diamant);
             background-size: 200% auto;
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: éclat 8s ease-in-out infinite;
             font-weight: 900;
@@ -139,7 +140,7 @@
         .empire-img { width: 100%; height: 500px; object-fit: cover; filter: grayscale(100%); transition: 0.8s; border: 1px solid #222; }
         .empire-img:hover { filter: grayscale(0%); transform: scale(1.05); border-color: #fff; }
 
-        /* --- SECTION RÉALISATIONS RÉELLES (AJOUTÉE) --- */
+        /* --- SECTION RÉALISATIONS RÉELLES --- */
         .realisations-section {
             padding: 80px 5%;
             background: #000;
@@ -193,26 +194,75 @@
             padding: 30px;
         }
 
-        /* --- TECHSTACK --- */
+        /* --- TECHSTACK SANS CADRE --- */
         .techstack-section { padding: 100px 5%; background: #000; text-align: center; }
-        .tech-cloud { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; max-width: 1000px; margin: 0 auto; }
+        .tech-cloud { display: flex; flex-wrap: wrap; justify-content: center; gap: 50px; max-width: 1000px; margin: 0 auto; }
         .tech-item {
-            width: 100px; height: 100px; background: rgba(255,255,255,0.03); border-radius: 20px;
-            display: flex; align-items: center; justify-content: center; transition: 0.4s;
-            border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            cursor: pointer;
         }
-        .tech-item:hover { transform: scale(1.15); border-color: var(--gold); box-shadow: 0 0 30px rgba(212,175,55,0.3); }
-        .tech-item img { width: 60px; height: 60px; object-fit: contain; }
+        .tech-item img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            filter: brightness(0.8);
+            transition: 0.3s;
+        }
+        .tech-item:hover img {
+            filter: brightness(1) drop-shadow(0 0 8px var(--gold));
+            transform: scale(1.1);
+        }
 
-        /* --- TIMELINE --- */
+        /* --- TIMELINE CORRIGÉE POUR MOBILE --- */
         .timeline-section { padding: 100px 5%; background: #0a0a0a; }
         .timeline { max-width: 1000px; margin: 0 auto; position: relative; }
-        .timeline::before { content: ''; position: absolute; left: 50%; width: 2px; height: 100%; background: var(--gold); }
-        .timeline-item { display: flex; justify-content: flex-end; padding: 30px; position: relative; width: 50%; }
-        .timeline-item:nth-child(even) { margin-left: 50%; justify-content: flex-start; }
-        .timeline-year { position: absolute; right: -60px; top: 30px; font-size: 1.5rem; font-weight: 800; color: var(--gold); }
-        .timeline-item:nth-child(even) .timeline-year { left: -60px; right: auto; }
-        .timeline-content { background: rgba(255,255,255,0.03); padding: 20px 30px; border-radius: 10px; width: 80%; border-left: 3px solid var(--gold); }
+        
+        /* Version desktop */
+        @media (min-width: 769px) {
+            .timeline::before { content: ''; position: absolute; left: 50%; width: 2px; height: 100%; background: var(--gold); }
+            .timeline-item { display: flex; justify-content: flex-end; padding: 30px; position: relative; width: 50%; }
+            .timeline-item:nth-child(even) { margin-left: 50%; justify-content: flex-start; }
+            .timeline-year { position: absolute; right: -60px; top: 30px; font-size: 1.5rem; font-weight: 800; color: var(--gold); }
+            .timeline-item:nth-child(even) .timeline-year { left: -60px; right: auto; }
+            .timeline-content { background: rgba(255,255,255,0.03); padding: 20px 30px; border-radius: 10px; width: 80%; border-left: 3px solid var(--gold); }
+        }
+        
+        /* Version mobile - timeline verticale avec années bien visibles */
+        @media (max-width: 768px) {
+            .timeline::before { content: ''; position: absolute; left: 20px; width: 2px; height: 100%; background: var(--gold); }
+            .timeline-item { 
+                display: block; 
+                width: 100%; 
+                padding: 0 0 30px 55px; 
+                position: relative; 
+                margin: 0;
+            }
+            .timeline-year { 
+                position: absolute; 
+                left: -10px; 
+                top: 0; 
+                font-size: 1.2rem; 
+                font-weight: 800; 
+                color: var(--gold); 
+                background: #0a0a0a;
+                padding: 4px 10px;
+                border-radius: 30px;
+                z-index: 2;
+                border: 1px solid var(--gold);
+            }
+            .timeline-content { 
+                background: rgba(255,255,255,0.03); 
+                padding: 15px 18px; 
+                border-radius: 10px; 
+                width: 100%; 
+                border-left: 3px solid var(--gold);
+            }
+            .timeline-content h3 { font-size: 1.3rem; margin-bottom: 8px; }
+            .timeline-content p { font-size: 0.9rem; opacity: 0.8; }
+        }
 
         /* --- MANIFESTE --- */
         .manifeste-section { padding: 120px 10%; background: #fff; color: #000; }
@@ -228,7 +278,7 @@
         }
         .disponibilite-badge:hover { background: var(--gold); border-color: var(--gold); }
 
-        /* --- TÉMOIGNAGES EN DEFILEMENT AVEC IMAGES --- */
+        /* --- TÉMOIGNAGES --- */
         .testimonials-section {
             padding: 100px 5%;
             background: #050505;
@@ -269,7 +319,7 @@
             to { transform: translateX(-50%); }
         }
 
-        /* --- APPLICATIONS AVEC DESIGN CARTES --- */
+        /* --- APPLICATIONS --- */
         .apps-section {
             padding: 100px 5%;
             background: #000;
@@ -462,7 +512,7 @@
         }
         .submit-btn:hover { background: var(--gold); color: black; }
 
-        /* --- RESPONSIVE MOBILE UNIQUEMENT (SANS MODIFIER LA PHOTO DU HERO SUR DESKTOP) --- */
+        /* --- RESPONSIVE MOBILE GLOBAL --- */
         @media (max-width: 1024px) {
             .hero { flex-direction: column; padding-top: 200px; text-align: center; }
             .hero-img { margin-top: 50px; width: 450px; height: 600px; }
@@ -470,11 +520,9 @@
             .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
             .apps-grid-modern .app-card-modern { border-right: none; }
             .contact-grid { grid-template-columns: 1fr; }
-            .timeline::before { left: 20px; }
-            .timeline-item { width: 100%; padding-left: 50px; justify-content: flex-start; }
-            .timeline-item:nth-child(even) { margin-left: 0; }
-            .timeline-year { left: -40px !important; right: auto !important; }
             .realisations-grid { grid-template-columns: 1fr; gap: 30px; }
+            .tech-cloud { gap: 30px; }
+            .tech-item img { width: 55px; height: 55px; }
         }
 
         @media (max-width: 768px) {
@@ -485,16 +533,18 @@
             .stats-grid { grid-template-columns: 1fr; gap: 15px; }
             .future-grid { grid-template-columns: 1fr; gap: 25px; }
             .apps-grid-modern { grid-template-columns: 1fr; gap: 20px; }
-            .tech-cloud { gap: 15px; }
-            .tech-item { width: 70px; height: 70px; }
-            .tech-item img { width: 40px; height: 40px; }
+            .tech-cloud { gap: 25px; }
+            .tech-item img { width: 45px; height: 45px; }
             .testimonial-card { width: 280px; padding: 15px; }
+            .testimonial-avatar { width: 45px; height: 45px; }
+            .testimonial-text { font-size: 0.85rem; }
             .realisations-title { font-size: 1.8rem; }
             .realisation-card h3 { font-size: 1.4rem; }
             .manifeste-section { padding: 60px 5%; }
             .disponibilite-badge { padding: 15px 20px; font-size: 0.8rem; width: 100%; text-align: center; }
             .contact-footer { padding: 60px 5%; border-radius: 30px 30px 0 0; }
             .contact-left h2 { font-size: 3rem; }
+            .modal-content { padding: 25px; }
         }
 
         @media (max-width: 480px) {
@@ -504,6 +554,11 @@
             .hero-description { font-size: 1rem; }
             .stat-number { font-size: 2rem; }
             .stat-label { font-size: 0.7rem; }
+            .tech-cloud { gap: 20px; }
+            .tech-item img { width: 40px; height: 40px; }
+            .timeline-year { font-size: 1rem; padding: 2px 8px; }
+            .timeline-content h3 { font-size: 1.1rem; }
+            .timeline-content p { font-size: 0.8rem; }
         }
     </style>
 </head>
@@ -551,7 +606,7 @@
         </div>
     </section>
 
-    <!-- SECTION RÉALISATIONS RÉELLES (AJOUTÉE AVEC VOS 2 LIENS) -->
+    <!-- SECTION RÉALISATIONS RÉELLES -->
     <section class="realisations-section">
         <h2 class="realisations-title effet-diamant">MES RÉALISATIONS</h2>
         <div class="realisations-grid">
@@ -586,25 +641,55 @@
     <section class="techstack-section">
         <h2 class="effet-diamant" style="font-size:2.5rem;">MA TECHNOLOGIE</h2>
         <div class="tech-cloud">
-            <div class="tech-item"><img src="C:\Users\NITROV15\Documents\portfolio\a.png" alt="React"></div>
-            <div class="tech-item"><img src="C:\Users\NITROV15\Documents\portfolio\b.png" alt="Node.js"></div>
-            <div class="tech-item"><img src="C:\Users\NITROV15\Documents\portfolio\c.png" alt="Python"></div>
-            <div class="tech-item"><img src="C:\Users\NITROV15\Documents\portfolio\d.png" alt="TensorFlow"></div>
-            <div class="tech-item"><img src="C:\Users\NITROV15\Documents\portfolio\e.png" alt="MongoDB"></div>
-            <div class="tech-item"><img src="C:\Users\NITROV15\Documents\portfolio\f.png" alt="AWS"></div>
-            <div class="tech-item"><img src="C:\Users\NITROV15\Documents\portfolio\g.png" alt="Figma"></div>
+            <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"></div>
+            <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js"></div>
+            <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"></div>
+            <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg" alt="TensorFlow"></div>
+            <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB"></div>
+            <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="Google Cloud"></div>
+            <div class="tech-item"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma"></div>
         </div>
     </section>
 
-    <!-- TIMELINE -->
+    <!-- TIMELINE CORRIGÉE -->
     <section class="timeline-section">
         <h2 class="effet-diamant" style="text-align:center; font-size:3rem;">MON PARCOURS</h2>
         <div class="timeline">
-            <div class="timeline-item"><div class="timeline-year">2021</div><div class="timeline-content"><h3>Vente en ligne</h3><p>Débuts dans l'e-commerce et vente de contenus digitaux</p></div></div>
-            <div class="timeline-item"><div class="timeline-year">2022</div><div class="timeline-content"><h3>Vente de terrains</h3><p>Négociation et transactions immobilières</p></div></div>
-            <div class="timeline-item"><div class="timeline-year">2023</div><div class="timeline-content"><h3>Création sites & flyers</h3><p>Prestations pour entreprises locales</p></div></div>
-            <div class="timeline-item"><div class="timeline-year">2024</div><div class="timeline-content"><h3>Freelance & Pierres précieuses</h3><p>Création de sites web et lancement Naomi Gems</p></div></div>
-            <div class="timeline-item"><div class="timeline-year">2026</div><div class="timeline-content"><h3>Fullstack & Future Entrepreneur</h3><p>Développeuse fullstack freelance, études et vision empire</p></div></div>
+            <div class="timeline-item">
+                <div class="timeline-year">2021</div>
+                <div class="timeline-content">
+                    <h3>Vente en ligne</h3>
+                    <p>Débuts dans l'e-commerce et vente de contenus digitaux</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2022</div>
+                <div class="timeline-content">
+                    <h3>Vente de terrains</h3>
+                    <p>Négociation et transactions immobilières</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2023</div>
+                <div class="timeline-content">
+                    <h3>Création sites & flyers</h3>
+                    <p>Prestations pour entreprises locales</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2024</div>
+                <div class="timeline-content">
+                    <h3>Freelance & Pierres précieuses</h3>
+                    <p>Création de sites web et lancement Naomi Gems</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-year">2026</div>
+                <div class="timeline-content">
+                    <h3>Fullstack & Future Entrepreneur</h3>
+                    <p>Développeuse fullstack freelance, études et vision empire</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -617,13 +702,13 @@
         </div>
     </section>
 
-    <!-- TÉMOIGNAGES EN DEFILEMENT AVEC IMAGES FICTIVES -->
+    <!-- TÉMOIGNAGES -->
     <section class="testimonials-section">
         <h2 class="effet-diamant" style="text-align:center; font-size:2.5rem; margin-bottom:50px;">ILS PARLENT DE MOI</h2>
         <div class="testimonials-marquee" id="testimonialsMarquee"></div>
     </section>
 
-    <!-- APPLICATIONS EN CARTES SÉPARÉES -->
+    <!-- APPLICATIONS -->
     <section class="apps-section">
         <h2 class="effet-diamant" style="font-size:2rem; margin-bottom:20px;">MES APPLICATIONS</h2>
         <div class="apps-description">
@@ -661,7 +746,7 @@
         </div>
     </section>
 
-    <!-- PROJETS FUTURS AVEC ESPACEMENT -->
+    <!-- PROJETS FUTURS -->
     <section class="future-projects">
         <div class="future-header">
             <h2 class="effet-diamant">PROJETS À VENIR</h2>
@@ -730,7 +815,7 @@
             updateCount();
         });
 
-        // TÉMOIGNAGES AVEC AVATARS IMAGES FICTIVES
+        // TÉMOIGNAGES
         const testimonialsList = [
             { name: "Marc D.", role: "Collaborateur", text: "Une visionnaire qui allie code et stratégie, une vraie valeur ajoutée.", stars: 5, avatar: "https://randomuser.me/api/portraits/men/1.jpg" },
             { name: "Sophie L.", role: "Client", text: "Naomi a transformé notre infrastructure en 3 mois, incroyable réactivité.", stars: 5, avatar: "https://randomuser.me/api/portraits/women/2.jpg" },
@@ -761,7 +846,6 @@
             `;
             marquee.appendChild(card);
         });
-        // Dupliquer pour effet infini
         testimonialsList.forEach(t => {
             const card = document.createElement('div');
             card.className = 'testimonial-card';
@@ -779,7 +863,7 @@
             marquee.appendChild(card);
         });
 
-        // MODALE CALENDRIER
+        // MODALE
         const modal = document.getElementById('calendarModal');
         function openModal() { modal.style.display = 'flex'; }
         document.querySelector('.close-modal').onclick = () => modal.style.display = 'none';
